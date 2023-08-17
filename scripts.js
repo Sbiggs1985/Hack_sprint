@@ -12,7 +12,7 @@ async function handleSearch() {
         return;
     }
 
-    const apiUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey={ad00caffb012448082150f6c32a9ae74}&query={search_query}`;
+    const apiUrl = https://api.spoonacular.com/recipes/complexSearch?apiKey=${SPOONACULAR_API_KEY}&query=${searchTerm}`;
     
     try {
         const response = await fetch(apiUrl);
@@ -27,7 +27,7 @@ function displayResults(results) {
     resultsList.innerHTML = '';
     results.forEach(result => {
         const listItem = document.createElement('li');
-        listItem.textContent = result.name; // Assuming API provides a 'name' property
+        listItem.textContent = result.food; // Assuming API provides a 'name' property
         resultsList.appendChild(listItem);
     });
 }
