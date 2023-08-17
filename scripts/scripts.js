@@ -12,7 +12,7 @@ async function handleSearch() {
         return;
     }
 
-    const apiUrl = `https://api.example.com/search?query=${encodeURIComponent(searchTerm)}`;
+    const apiUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey={ad00caffb012448082150f6c32a9ae74}&query={search_query}`;
     
     try {
         const response = await fetch(apiUrl);
