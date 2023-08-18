@@ -41,9 +41,9 @@ searchButton.addEventListener("click", () => {
     }
 });
 
-function searchRecipesByMealType(mealType) {
-    const apiKey = '340b6b0b2bmsh38d630a5cd772c9p15cebcjsnb3eb0ddfb0d0'; // Replace with your API key
-    const apiUrl = `https://edamam-food-and-grocery-database.p.rapidapi.com/api/food-database/v2/parser?nutrition-type=cooking&ingr=${ingredient}&mealType=Breakfast`;
+function searchRecipesByIngredient(ingredient) {
+        const apiKey = '340b6b0b2bmsh38d630a5cd772c9p15cebcjsnb3eb0ddfb0d0'; // Replace with your API key
+        const apiUrl = `https://edamam-food-and-grocery-database.p.rapidapi.com/api/food-database/v2/parser=${ingredient}&apiKey=${apiKey}`;
 
         fetch(apiUrl)
             .then(response => response.json())
