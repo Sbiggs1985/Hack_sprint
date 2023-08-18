@@ -29,7 +29,7 @@ function searchRecipesByIngredient(ingredient) {
 }
 
 function displayRecipes(recipes) {
-    const resultsContainer = $('#responseContainer');
+    const resultsContainer = $('#resultsContainer');
     resultsContainer.empty();
 
     recipes.forEach(recipe => {
