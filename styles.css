@@ -1,0 +1,12 @@
+.recipe-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.recipe-card img {
+    max-width: 100%;
+    height: auto;
+}
