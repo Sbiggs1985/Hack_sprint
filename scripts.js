@@ -1,66 +1,73 @@
-const settings = {
-	async: true,
-	crossDomain: true,
-	url: 'https://edamam-food-and-grocery-database.p.rapidapi.com/api/food-database/v2/parser?nutrition-type=cooking&category%5B0%5D=generic-foods&health%5B0%5D=alcohol-free',
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': '340b6b0b2bmsh38d630a5cd772c9p15cebcjsnb3eb0ddfb0d0',
-		'X-RapidAPI-Host': 'edamam-food-and-grocery-database.p.rapidapi.com'
-	}
-};
-
-$.ajax(settings).done(function (response) {
-	console.log(response);
-});
-
-// scripts.js
-$('#searchButton').on('click', function () {
-    $.ajax(settings).done(function (response) {
-        displayResponse(response);
-    });
-});
-
-function displayResponse(response) {
-    const responseContainer = $('#responseContainer');
-    responseContainer.empty();
-
-    const preElement = $('<pre>').text(JSON.stringify(response, null, 2));
-    responseContainer.append(preElement);
-}
-
-// Add this code after the previous code in scripts.js
-
-const searchButton = document.getElementById("searchButton");
-const searchInput = document.getElementById("searchInput");
-const resultsContainer = document.getElementById("resultsContainer");
-
-searchButton.addEventListener("click", () => {
-    const searchTerm = searchInput.value.trim();
-    if (searchTerm) {
-        searchFood(searchTerm);
-    }
-});
-
-function searchRecipesByMealType(mealType) {
-    const apiKey = '340b6b0b2bmsh38d630a5cd772c9p15cebcjsnb3eb0ddfb0d0'; // Replace with your API key
-    const apiUrl = `https://edamam-food-and-grocery-database.p.rapidapi.com/api/food-database/v2/parser?nutrition-type=cooking&ingr=${ingredient}&mealType=Breakfast`;
-
-        fetch(apiUrl)
-            .then(response => response.json())
-            .then(data => displayRecipes(data))
-            .catch(error => console.error("Error fetching data:", error));
-    }
-
-    function displayRecipes(recipes) {
-        resultsContainer.innerHTML = "";
-
-        recipes.forEach(recipe => {
-            const recipeCard = document.createElement("div");
-            recipeCard.classList.add("recipe-card");
-            recipeCard.innerHTML = `
-                <h2>${recipe.title}</h2>
-                <img src="${recipe.image}" alt="${recipe.title}">
-            `;
-            resultsContainer.appendChild(recipeCard);
-        });
+const searchMeal = async (e) => {
+    e.preventDefault();
+  
+    // Select Elements
+    const input = document.querySelector(".input");
+    const title = document.querySelector(".title");
+    const info = document.querySelector(".info");
+    const img = document.querySelector(".img");
+    const ingredientsOutput = document.querySelector(".ingredients");
+  
+    const showMealInfo = (meal) => {
+      const { strMeal, strMealThumb, strInstructions } = meal;
+      title.textContent = strMeal;
+      img.style.backgroundImage = `url(${strMealThumb})`;
+      info.textContent = strInstructions;
+  
+      const ingredients = [];
+  
+      for (let i = 1; i <= 20; i++) {
+        if (meal[`strIngredient${i}`]) {
+          ingredients.push(
+            `${meal[`strIngredient${i}`]} - ${meal[`strMeasure${i}`]}`
+          );
+        } else {
+          break;
+        }
+      }
+  
+      const html = `
+      <span>${ingredients
+        .map((ing) => `<li class="ing">${ing}</li>`)
+        .join("")}</span>
+      `;
+  
+      ingredientsOutput.innerHTML = html;
     };
+  
+    const showAlert = () => {
+      alert("Meal not found :(");
+    };
+  
+    // Fetch Data
+    const fetchMealData = async (val) => {
+      const res = await fetch(
+        `https://www.themealdb.com/api/json/v1/1/search.php?s=${val}`
+      );
+  
+      const { meals } = await res.json();
+      return meals;
+    };
+  
+    // Get the user value
+    const val = input.value.trim();
+  
+    if (val) {
+      const meals = await fetchMealData(val);
+  
+      if (!meals) {
+        showAlert();
+        return;
+      }
+  
+      meals.forEach(showMealInfo);
+    } else {
+      alert("Please try searching for meal :)");
+    }
+  };
+  
+  const form = document.querySelector("form");
+  form.addEventListener("submit", searchMeal);
+  
+  const magnifier = document.querySelector(".magnifier");
+  magnifier.addEventListener("click", searchMeal);

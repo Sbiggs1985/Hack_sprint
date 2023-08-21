@@ -1,17 +1,49 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>You're being an asshole</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meal Finder</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <nav>
+      <form class="input-container">
+        <input type="text" class="input" placeholder="Search ..." />
+        <i class="fa-solid fa-magnifying-glass magnifier"></i>
+      </form>
 
-</head>
-<body>
-    <h1>You're being an asshole</h1>
-    <input type="text" id="searchInput" placeholder="Search for recipes...">
-    <button id="searchButton">Search</button>
-    <div id="responseContainer"></div>
-    <script src="scripts.js"></script>
-</body>
+      <ul>
+        <li>Breakfast</li>
+        <li>Launch</li>
+        <li>Dinner</li>
+      </ul>
+    </nav>
+
+    <main>
+      <div class="container">
+        <div class="img"></div>
+
+        <div class="content-container">
+          <h1 class="title">Food Name</h1>
+          <p class="info">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde
+            nostrum consequatur, nulla explicabo vero nesciunt architecto
+            officiis eius ullam alias.
+          </p>
+          <button class="main-btn">$20 - Order Now</button>
+        </div>
+      </div>
+    </main>
+
+    <section class="ingredients"></section>
+
+    <script src="app.js"></script>
+  </body>
 </html>
