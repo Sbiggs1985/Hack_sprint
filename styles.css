@@ -1,3 +1,7 @@
+body {
+  background-color: mediumaquamarine;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -12,7 +16,7 @@ nav {
 .input-container {
   display: flex;
   align-items: center;
-  border: 1px solid #ff6e00;
+  border: 1px solid black;
   padding: 5px;
   width: 300px;
   height: 50px;
@@ -26,7 +30,7 @@ nav {
   margin: 10px 50px;
   margin-left: 20px;
   width: 100%;
-  color: #ff6e00;
+  color: black;
   border: none;
   background: transparent;
   outline: none;
@@ -40,7 +44,7 @@ nav {
   text-align: center;
   margin: 0 auto;
   cursor: pointer;
-  color: #ffa31a;
+  color: black;
 }
 
 ul li {
@@ -130,8 +134,8 @@ main {
 
 .ing {
   padding: 10px 20px;
-  border: 2px solid #ff6e00;
-  color: #ff6e00;
+  border: 2px solid black;
+  color: black;
   font-family: sans-serif;
   border-radius: 100px;
 }
@@ -139,7 +143,11 @@ main {
 .main-btn {
   background: transparent;
   border: none;
-  border: 2px solid #ffa31a;
+  border: 2px solid black;
   padding: 10px;
-  color: #ffa31a;
+  color: black;
+}
+
+li {
+  font-size: 20px; /* Adjust the value as needed */
 }
