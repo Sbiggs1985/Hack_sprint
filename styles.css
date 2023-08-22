@@ -1,5 +1,7 @@
 body {
-  background-color: mediumaquamarine;
+  background-image: url("static/images/R.jpg");
+  background-size: cover; /* Scale the image to cover the entire background */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
 }
 
 * {
@@ -7,6 +9,7 @@ body {
 }
 
 nav {
+
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -79,7 +82,7 @@ main {
   font-family: sans-serif;
   line-height: 1.4;
   margin-bottom: 2rem;
-  color: #444444;
+  color: black;
   width: 26rem;
 }
 
@@ -98,7 +101,7 @@ main {
             width: 100%;
             padding: 10px;
             font-size: 16px;
-            border: 1px solid #ccc;
+            border: 1px solid black;
             border-radius: 5px;
             margin-bottom: 20px;
 
